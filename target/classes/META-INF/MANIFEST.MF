@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Priyanshu Pandey
+Build-Jdk: 11.0.20
+Implementation-Title: MutualFund
+Implementation-Version: 1
+Implementation-Vendor-Id: com.ofss
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/MutualFund/
+Created-By: Maven Integration for Eclipse
+
