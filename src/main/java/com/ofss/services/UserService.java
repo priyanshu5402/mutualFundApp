@@ -1,5 +1,7 @@
 package com.ofss.services;
 
+import java.util.ArrayList;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -19,7 +21,7 @@ public class UserService {
 	public String login(Users user){
 		Users tempUser = userRepo.findByUserNamePass(user.getUsername(), user.getPassword());
 		System.out.println(tempUser.getUsername()+"   "+user.getUsername());
-
+		
 		if(( tempUser.getUsername().equals(user.getUsername()) ) && ( tempUser.getPassword().equals(user.getPassword()) )) {
 
 			return "success sign in";
@@ -29,4 +31,22 @@ public class UserService {
 			return "invalid user";
 		}
 	}
+	
+	public String login(Manager manager){
+		Users tempUser = userRepo.findByUserNamePass(manager.getUsername(), manager.getPassword());
+		System.out.println(tempUser.getUsername()+"   "+manager.getUsername());
+		
+		if(( tempUser.getUsername().equals(manager.getUsername()) ) && ( tempUser.getPassword().equals(manager.getPassword()) )) {
+
+			return "Manager success sign in";
+
+		}
+		else {
+			return "invalid user";
+		}
+	}
+	
+	
+	
+	
 }
