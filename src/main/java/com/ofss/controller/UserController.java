@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ofss.model.Manager;
 import com.ofss.model.Users;
 import com.ofss.services.UserService;
 
