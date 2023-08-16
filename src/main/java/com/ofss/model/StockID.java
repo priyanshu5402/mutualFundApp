@@ -1,11 +1,12 @@
 package com.ofss.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 public class StockID  implements Serializable{
 	
 	
 	private int stockId;
-	private String present_date;
+	private Date present_date;
 	
 	
 	public int getStockPriceId() {
@@ -14,11 +15,12 @@ public class StockID  implements Serializable{
 	public void setStockPriceId(int stockPriceId) {
 		this.stockId = stockPriceId;
 	}
-	public String getDate() {
+
+	public Date getPresent_date() {
 		return present_date;
 	}
-	public void setDate(String date) {
-		this.present_date = date;
+	public void setPresent_date(Date present_date) {
+		this.present_date = present_date;
 	}
 	@Override
 	public String toString() {

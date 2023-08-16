@@ -13,7 +13,7 @@ import com.ofss.model.Users;
 
 public interface StockRepository extends CrudRepository<Stocks, StockID> {
 	
-	@Query(value = "SELECT * FROM stocks where stock_id>8", nativeQuery = true)
+	@Query(value = "SELECT * FROM stocks", nativeQuery = true)
 	ArrayList<Stocks> getAllStocks();	
 	
 	

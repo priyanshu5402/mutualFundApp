@@ -15,10 +15,10 @@ public class StockService {
 	@Autowired
 	StockRepository stockRepo;
 	
-	public Iterable<Stocks> getAllStocks(){
-		Iterable<Stocks> stocks = stockRepo.getAllStocks();
+	public ArrayList<Stocks> getAllStocks(){
+		ArrayList<Stocks> stocks = stockRepo.getAllStocks();
 		
-//		stocks.forEach(element -> );
+		
 		return stocks;
 	}
 	

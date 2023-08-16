@@ -23,11 +23,13 @@ public class UserService {
 		System.out.println(tempUser.getUsername()+"   "+user.getUsername());
 		
 		if(( tempUser.getUsername().equals(user.getUsername()) ) && ( tempUser.getPassword().equals(user.getPassword()) )) {
-
+			
+			System.out.println("Logged in ");
 			return "success sign in";
 
 		}
 		else {
+			System.out.println("Invalid User");
 			return "invalid user";
 		}
 	}
