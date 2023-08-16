@@ -22,20 +22,20 @@ public class Stocks {
 	@EmbeddedId
 	private StockID stock_id;
 	
-	@Column(name = "stock_name",nullable = false, length=20)
+	@Column(name = "stock_name",nullable = false, length=100)
 	private String stockName;
 	
 	@Column(name="opening_price", nullable = false, length=20)
-	private int openingPrice;
+	private float openingPrice;
 	
 	@Column(name="closing_price", nullable = false, length=20)
-	private int closingPrice;
+	private float closingPrice;
 
-//	public int getStockId() {
+//	public float getStockId() {
 //		return stockId;
 //	}
 //
-//	public void setStockId(int stockId) {
+//	public void setStockId(float stockId) {
 //		this.stockId = stockId;
 //	}
 //
@@ -55,19 +55,19 @@ public class Stocks {
 //		this.date = date;
 //	}
 
-	public int getOpeningPrice() {
+	public float getOpeningPrice() {
 		return openingPrice;
 	}
 
-	public void setOpeningPrice(int openingPrice) {
+	public void setOpeningPrice(float openingPrice) {
 		this.openingPrice = openingPrice;
 	}
 
-	public int getClosingPrice() {
+	public float getClosingPrice() {
 		return closingPrice;
 	}
 
-	public void setClosingPrice(int closingPrice) {
+	public void setClosingPrice(float closingPrice) {
 		this.closingPrice = closingPrice;
 	}
 
@@ -80,9 +80,9 @@ public class Stocks {
 	}
 
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private int stockPriceId;
+//	private float stockPriceId;
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private int stockId;
+//	private float stockId;
 //	
 
 //	@Column(name="current_date", nullable = false, length=20)
