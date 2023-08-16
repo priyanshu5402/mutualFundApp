@@ -21,7 +21,7 @@ public class StockController {
 	StockService stockservice;
 	
 	@RequestMapping(value="/stocks",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public Iterable<Stocks> getAllStocks() {
+	public ArrayList<Stocks> getAllStocks() {
 		System.out.println("getAllStocks function called..");
 		return stockservice.getAllStocks();
 	}

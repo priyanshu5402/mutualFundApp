@@ -22,7 +22,12 @@ public class UserController {
 	@RequestMapping(value="/userlogin", method=RequestMethod.POST)
 	public String login(@RequestBody Users user) {
 		System.out.println("login function called..");
+		if(userservice.login(user) == null) {
+		return "invalid user";
+		}
+		else {
 		return userservice.login(user);
+		}
 	}
 	
 	@RequestMapping(value="/Managerlogin", method=RequestMethod.POST)
