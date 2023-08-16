@@ -6,13 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import com.ofss.model.StockDetail;
+import com.ofss.model.StockID;
+import com.ofss.model.Stocks;
 import com.ofss.model.Users;
 
-public interface StockRepository extends CrudRepository<Stocks, Integer> {
+public interface StockRepository extends CrudRepository<Stocks, StockID> {
 	
-//	@Query(value = "SELECT * FROM Stocks", nativeQuery = true)
-//	ArrayList<Stocks> getAllStocks();	
+	@Query(value = "SELECT * FROM stocks where stock_id>8", nativeQuery = true)
+	ArrayList<Stocks> getAllStocks();	
 	
 	
-
 }

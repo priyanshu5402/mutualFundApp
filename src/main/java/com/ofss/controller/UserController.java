@@ -31,9 +31,5 @@ public class UserController {
 		return userservice.login(manager);
 	}
 	
-	@RequestMapping(value="/stocks",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ArrayList<Stocks> getAllStocks(@RequestBody Stocks stock) {
-		System.out.println("login function called..");
-		return userservice.login(stock);
-	}
+
 }

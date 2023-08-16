@@ -1,8 +1,10 @@
-package com.ofss.services;
+	package com.ofss.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ofss.model.Users;
+import com.ofss.repository.ManagerRepository;
 
 @Service
 public class ManagerService {

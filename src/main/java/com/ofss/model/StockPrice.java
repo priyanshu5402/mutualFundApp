@@ -24,7 +24,7 @@ public class StockPrice {
 	@JoinColumn(name="stock_id")
 	private StockDetail stockDetail;
 	
-	@Column(name="date", nullable = false, length=20)
+	@Column(name="current_date", nullable = false, length=20)
 	private String date;
 	
 	@Column(name="opening_price", nullable = false, length=20)
