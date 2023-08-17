@@ -33,7 +33,7 @@ public class Transactions {
 	@Column(name="units_purchased", nullable = false, length=20)
 	private int unitsPurchased;
 	
-	@Column(name="transaction_price", nullable = false, length=20, precision = 8, scale=3)
+	@Column(name="transaction_price", nullable = false, precision = 8, scale=3)
 	private float transactionPrice;
 
 	public int getTransactionId() {

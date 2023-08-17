@@ -1,5 +1,7 @@
 package com.ofss.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,27 +21,33 @@ public class MutualFund {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int mutualFundId;
 	
-	@ManyToOne
-	@JoinColumn(name="userid")
-	private Users user;
+	@Column(name="mutual_fund_name", nullable = false, length=40)
+	private String mutualFundName;
 	
-	@Column(name="entry_load", nullable = false, length=20, precision = 8, scale=3)
+	@Column(name="entry_load", nullable = true, precision = 8, scale=3)
 	private float entryLoad;
 	
-	@Column(name="exit_load", nullable = false, length=20, precision = 8, scale=3)
+	@Column(name="exit_load", nullable = true, precision = 8, scale=3)
 	private float exit_load;
 	
-	@Column(name="expense_ratio", nullable = false, length=20, precision = 8, scale=3)
+	@Column(name="expense_ratio", nullable = true, precision = 8, scale=3)
 	private float expenseRatio;
 	
-	@Column(name="cash_balance", nullable = false, length=20, precision = 8, scale=3)
+	@Column(name="cash_balance", nullable = true, precision = 8, scale=3)
 	private float cashBalance;
 	
-	@Column(name="remaining_units", nullable = false, length=20)
-	private int remainingUnits;
+	@Column(name="total_corpus", nullable = false, precision = 8, scale=3)
+	private float totalCorpus;
 	
-	@Column(name="nav", nullable = false, length=20, precision = 8, scale=3)
+	@Column(name="nav", nullable = true, precision = 8, scale=3)
 	private float nav;
+
+	@ManyToOne
+	@JoinColumn(name="stock_id")
+	private List<StockDetail> stockDetail;
+	
+	@Column(name="weightage", nullable = false, length=20)
+	private List<Integer> weightage;
 
 	public int getMutualFundId() {
 		return mutualFundId;
@@ -49,12 +57,12 @@ public class MutualFund {
 		this.mutualFundId = mutualFundId;
 	}
 
-	public Users getUser() {
-		return user;
+	public String getMutualFundName() {
+		return mutualFundName;
 	}
 
-	public void setUser(Users user) {
-		this.user = user;
+	public void setMutualFundName(String mutualFundName) {
+		this.mutualFundName = mutualFundName;
 	}
 
 	public float getEntryLoad() {
@@ -89,12 +97,12 @@ public class MutualFund {
 		this.cashBalance = cashBalance;
 	}
 
-	public int getRemainingUnits() {
-		return remainingUnits;
+	public float getTotalCorpus() {
+		return totalCorpus;
 	}
 
-	public void setRemainingUnits(int remainingUnits) {
-		this.remainingUnits = remainingUnits;
+	public void setTotalCorpus(float totalCorpus) {
+		this.totalCorpus = totalCorpus;
 	}
 
 	public float getNav() {
@@ -104,22 +112,40 @@ public class MutualFund {
 	public void setNav(float nav) {
 		this.nav = nav;
 	}
-	
-	public MutualFund() {
-		// TODO Auto-generated constructor stub
+
+	public List<StockDetail> getStockDetail() {
+		return stockDetail;
 	}
 
-	public MutualFund(int mutualFundId, Users user, float entryLoad, float exit_load, float expenseRatio,
-			float cashBalance, int remainingUnits, float nav) {
+	public void setStockDetail(List<StockDetail> stockDetail) {
+		this.stockDetail = stockDetail;
+	}
+
+	public List<Integer> getWeightage() {
+		return weightage;
+	}
+
+	public void setWeightage(List<Integer> weightage) {
+		this.weightage = weightage;
+	}
+
+	public MutualFund(int mutualFundId, String mutualFundName, float entryLoad, float exit_load, float expenseRatio,
+			float cashBalance, float totalCorpus, float nav, List<StockDetail> stockDetail, List<Integer> weightage) {
 		super();
 		this.mutualFundId = mutualFundId;
-		this.user = user;
+		this.mutualFundName = mutualFundName;
 		this.entryLoad = entryLoad;
 		this.exit_load = exit_load;
 		this.expenseRatio = expenseRatio;
 		this.cashBalance = cashBalance;
-		this.remainingUnits = remainingUnits;
+		this.totalCorpus = totalCorpus;
 		this.nav = nav;
+		this.stockDetail = stockDetail;
+		this.weightage = weightage;
+	}
+	
+	public MutualFund() {
+		// TODO Auto-generated constructor stub
 	}
 	
 }
