@@ -21,8 +21,8 @@ public class Investment {
 	private int investmentId;
 	
 	@ManyToOne
-	@JoinColumn(name="userid")
-	private Users user;
+	@JoinColumn(name="investorid")
+	private Investor investorId;
 	
 	@ManyToOne
 	@JoinColumn(name="mutual_fund_id")
@@ -39,12 +39,12 @@ public class Investment {
 		this.investmentId = investmentId;
 	}
 
-	public Users getUser() {
-		return user;
+	public Investor getInvestorId() {
+		return investorId;
 	}
 
-	public void setUser(Users user) {
-		this.user = user;
+	public void setInvestorId(Investor investorId) {
+		this.investorId = investorId;
 	}
 
 	public MutualFund getMutual_fund() {
@@ -63,15 +63,11 @@ public class Investment {
 		this.totalUnits = totalUnits;
 	}
 
-	public Investment(int investmentId, Users user, MutualFund mutual_fund, int totalUnits) {
-		super();
-		this.investmentId = investmentId;
-		this.user = user;
-		this.mutual_fund = mutual_fund;
-		this.totalUnits = totalUnits;
+	@Override
+	public String toString() {
+		return "Investment [investmentId=" + investmentId + ", investorId=" + investorId + ", mutual_fund="
+				+ mutual_fund + ", totalUnits=" + totalUnits + "]";
 	}
-	
-	public Investment() {
-		// TODO Auto-generated constructor stub
-	}
+
+
 }

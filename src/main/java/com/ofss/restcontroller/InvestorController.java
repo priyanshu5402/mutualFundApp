@@ -1,40 +1,37 @@
-package com.ofss.controller;
+package com.ofss.restcontroller;
 
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ofss.model.Investor;
 import com.ofss.model.Manager;
-import com.ofss.model.Users;
-import com.ofss.services.UserService;
+import com.ofss.services.InvestorService;
 
 @RestController
-public class UserController {
+public class InvestorController {
 
 	@Autowired
-	UserService userservice;
+	InvestorService investorservice;
 	
 	@RequestMapping(value="/userlogin", method=RequestMethod.POST)
-	public String login(@RequestBody Users user) {
+	public Boolean login(@RequestBody Investor investor) {
 		System.out.println("login function called..");
-		if(userservice.login(user) == null) {
-		return "invalid user";
+		if(investorservice.login(investor) == null) {
+		//return "invalid user";
+			return false;
 		}
 		else {
-		return userservice.login(user);
+		return investorservice.login(investor);
 		}
 	}
-	
-	@RequestMapping(value="/Managerlogin", method=RequestMethod.POST)
-	public String login(@RequestBody Manager manager) {
-		System.out.println("login function called..");
-		return userservice.login(manager);
-	}
+
 	
 
 }

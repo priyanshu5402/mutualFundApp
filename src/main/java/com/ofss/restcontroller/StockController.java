@@ -1,4 +1,4 @@
-package com.ofss.controller;
+package com.ofss.restcontroller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,5 +24,10 @@ public class StockController {
 	public ArrayList<Stocks> getAllStocks() {
 		System.out.println("getAllStocks function called..");
 		return stockservice.getAllStocks();
+	}
+	@RequestMapping(value="/uniquestocks",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ArrayList<Stocks> getUniqueStocks() {
+		System.out.println("getAllStocks function called..");
+		return stockservice.getUniqueStocks();
 	}
 }

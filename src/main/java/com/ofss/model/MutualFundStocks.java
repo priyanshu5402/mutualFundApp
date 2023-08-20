@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,9 +25,16 @@ public class MutualFundStocks {
 	@JoinColumn(name="mutual_fund_id")
 	private MutualFund mutual_fund;
 	
+//	@ManyToOne
+//	@JoinColumn(name="stock_id")
+//	private StockID stockId;
+	
 	@ManyToOne
-	@JoinColumn(name="stock_id")
-	private StockDetail stockDetail;
+    @JoinColumns({
+        @JoinColumn(name = "stockId", referencedColumnName = "stockId"),
+        @JoinColumn(name = "present_date", referencedColumnName = "present_date")
+    })
+    private Stocks stockId; // Many-to-one relationship to Orders entity
 	
 	@Column(name="weightage", nullable = false, length=20)
 	private int weightage;
@@ -47,13 +55,13 @@ public class MutualFundStocks {
 		this.mutual_fund = mutual_fund;
 	}
 
-	public StockDetail getStockDetail() {
-		return stockDetail;
-	}
-
-	public void setStockDetail(StockDetail stockDetail) {
-		this.stockDetail = stockDetail;
-	}
+//	public StockDetail getStockDetail() {
+//		return stockDetail;
+//	}
+//
+//	public void setStockDetail(StockDetail stockDetail) {
+//		this.stockDetail = stockDetail;
+//	}
 
 	public int getWeightage() {
 		return weightage;
@@ -63,11 +71,11 @@ public class MutualFundStocks {
 		this.weightage = weightage;
 	}
 
-	public MutualFundStocks(int mfStockId, MutualFund mutual_fund, StockDetail stockDetail, int weightage) {
+	public MutualFundStocks(int mfStockId, MutualFund mutual_fund, Stocks stockId, int weightage) {
 		super();
 		this.mfStockId = mfStockId;
 		this.mutual_fund = mutual_fund;
-		this.stockDetail = stockDetail;
+		this.stockId = stockId;
 		this.weightage = weightage;
 	}
 	

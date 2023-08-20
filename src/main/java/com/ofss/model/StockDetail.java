@@ -18,7 +18,7 @@ public class StockDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int stockId;
 	
-	@Column(name="stock_name", nullable = false, length=20)
+	@Column(name="stock_name", nullable = false, length=100)
 	private String stockName;
 
 	public int getStockId() {

@@ -21,7 +21,7 @@ public class Transactions {
 	
 	@ManyToOne
 	@JoinColumn(name="userid")
-	private Users user;
+	private Investor investorId;
 	
 	@ManyToOne
 	@JoinColumn(name="mutual_fund_id")
@@ -44,13 +44,7 @@ public class Transactions {
 		this.transactionId = transactionId;
 	}
 
-	public Users getUser() {
-		return user;
-	}
 
-	public void setUser(Users user) {
-		this.user = user;
-	}
 
 	public MutualFund getMutual_fund() {
 		return mutual_fund;
@@ -88,15 +82,37 @@ public class Transactions {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Transactions(int transactionId, Users user, MutualFund mutual_fund, int unitsSold, int unitsPurchased,
-			float transactionPrice) {
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
+	public Transactions(int transactionId, Investor investorId, MutualFund mutual_fund, int unitsSold,
+			int unitsPurchased, float transactionPrice) {
 		super();
 		this.transactionId = transactionId;
-		this.user = user;
+		this.investorId = investorId;
 		this.mutual_fund = mutual_fund;
 		this.unitsSold = unitsSold;
 		this.unitsPurchased = unitsPurchased;
 		this.transactionPrice = transactionPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "Transactions [transactionId=" + transactionId + ", investorId=" + investorId + ", mutual_fund="
+				+ mutual_fund + ", unitsSold=" + unitsSold + ", unitsPurchased=" + unitsPurchased
+				+ ", transactionPrice=" + transactionPrice + "]";
+	}
+
+	public Investor getInvestorId() {
+		return investorId;
+	}
+
+	public void setInvestorId(Investor investorId) {
+		this.investorId = investorId;
 	}
 	
 }

@@ -13,33 +13,56 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 @JacksonXmlRootElement
 @Entity
-@Table(name="mutual_fund")
+@Table(name="mutual_fund")	
 public class MutualFund {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int mutualFundId;
 	
-	@ManyToOne
-	@JoinColumn(name="userid")
-	private Users user;
+	@Column(name="mutual_fund_name", nullable = false, length=100)
+	private String mutualFundName;
 	
-	@Column(name="entry_load", nullable = false, length=20, precision = 8, scale=3)
-	private float entryLoad;
+	@Column(name="entry_load", nullable = true, length=20, precision = 8, scale=3)
+	private double entryLoad;
 	
-	@Column(name="exit_load", nullable = false, length=20, precision = 8, scale=3)
-	private float exit_load;
+	@Column(name="exit_load", nullable = true, length=20, precision = 8, scale=3)
+	private double exit_load;
 	
-	@Column(name="expense_ratio", nullable = false, length=20, precision = 8, scale=3)
-	private float expenseRatio;
+	@Column(name="expense_ratio", nullable = true, length=20, precision = 8, scale=3)
+	private double expenseRatio;
 	
-	@Column(name="cash_balance", nullable = false, length=20, precision = 8, scale=3)
-	private float cashBalance;
+	@Column(name="cash_balance", nullable = true, length=20, precision = 8, scale=3)
+	private double cashBalance;
 	
-	@Column(name="remaining_units", nullable = false, length=20)
+	@Column(name="total_Outstanding_units", nullable = true, length=20)
+	private int totalOutstandingUnits;
+	
+	@Column(name="remaining_units", nullable = true, length=20)
 	private int remainingUnits;
 	
-	@Column(name="nav", nullable = false, length=20, precision = 8, scale=3)
-	private float nav;
+	@Column(name="nav", nullable = true, length=20, precision = 8, scale=3)
+	private double nav;
+	
+	@Column(name="total_Investment", nullable = true, length=20)
+	private double totalInvestment;
+
+
+
+	public int getTotalOutstandingUnits() {
+		return totalOutstandingUnits;
+	}
+
+	public void setTotalOutstandingUnits(int totalOutstandingUnits) {
+		this.totalOutstandingUnits = totalOutstandingUnits;
+	}
+
+	public double getTotalInvestment() {
+		return totalInvestment;
+	}
+
+	public void setTotalInvestment(double totalInvestment2) {
+		this.totalInvestment = totalInvestment2;
+	}
 
 	public int getMutualFundId() {
 		return mutualFundId;
@@ -49,43 +72,43 @@ public class MutualFund {
 		this.mutualFundId = mutualFundId;
 	}
 
-	public Users getUser() {
-		return user;
+	public String getMutualFundName() {
+		return mutualFundName;
 	}
 
-	public void setUser(Users user) {
-		this.user = user;
+	public void setMutualFundName(String mutualFundName) {
+		this.mutualFundName = mutualFundName;
 	}
 
-	public float getEntryLoad() {
+	public double getEntryLoad() {
 		return entryLoad;
 	}
 
-	public void setEntryLoad(float entryLoad) {
+	public void setEntryLoad(double entryLoad) {
 		this.entryLoad = entryLoad;
 	}
 
-	public float getExit_load() {
+	public double getExit_load() {
 		return exit_load;
 	}
 
-	public void setExit_load(float exit_load) {
+	public void setExit_load(double exit_load) {
 		this.exit_load = exit_load;
 	}
 
-	public float getExpenseRatio() {
+	public double getExpenseRatio() {
 		return expenseRatio;
 	}
 
-	public void setExpenseRatio(float expenseRatio) {
+	public void setExpenseRatio(double expenseRatio) {
 		this.expenseRatio = expenseRatio;
 	}
 
-	public float getCashBalance() {
+	public double getCashBalance() {
 		return cashBalance;
 	}
 
-	public void setCashBalance(float cashBalance) {
+	public void setCashBalance(double cashBalance) {
 		this.cashBalance = cashBalance;
 	}
 
@@ -97,29 +120,16 @@ public class MutualFund {
 		this.remainingUnits = remainingUnits;
 	}
 
-	public float getNav() {
+	public double getNav() {
 		return nav;
 	}
 
-	public void setNav(float nav) {
+	public void setNav(double nav) {
 		this.nav = nav;
-	}
-	
-	public MutualFund() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public MutualFund(int mutualFundId, Users user, float entryLoad, float exit_load, float expenseRatio,
-			float cashBalance, int remainingUnits, float nav) {
-		super();
-		this.mutualFundId = mutualFundId;
-		this.user = user;
-		this.entryLoad = entryLoad;
-		this.exit_load = exit_load;
-		this.expenseRatio = expenseRatio;
-		this.cashBalance = cashBalance;
-		this.remainingUnits = remainingUnits;
-		this.nav = nav;
-	}
+public MutualFund() {
+	// TODO Auto-generated constructor stub
+}
 	
 }

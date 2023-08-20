@@ -3,7 +3,7 @@
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ofss.model.Users;
+import com.ofss.model.Manager;
 import com.ofss.repository.ManagerRepository;
 
 @Service
@@ -13,11 +13,11 @@ public class ManagerService {
 	ManagerRepository managerRepo;
 	
 	
-	public String login(Users user){
-		Users tempUser = managerRepo.findByUserNamePass(user.getUsername(), user.getPassword());
-		System.out.println(tempUser.getUsername()+"   "+user.getUsername());
+	public String login(Manager manager){
+		Manager tempUser = managerRepo.findByManagerNamePass(manager.getUsername(), manager.getPassword());
+		System.out.println(tempUser.getUsername()+"   "+manager.getUsername());
 		
-		if(( tempUser.getUsername().equals(user.getUsername()) ) && ( tempUser.getPassword().equals(user.getPassword()) )) {
+		if(( tempUser.getUsername().equals(manager.getUsername()) ) && ( tempUser.getPassword().equals(manager.getPassword()) )) {
 
 			return "success sign in";
 

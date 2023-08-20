@@ -22,6 +22,11 @@ public class StockService {
 		return stocks;
 	}
 	
+	public ArrayList<Stocks> getUniqueStocks(){
+		ArrayList<Stocks> stocks = stockRepo.getUniqueStocks();
+		
+		return stocks;
+	}
 //	public Stocks getMe(int stockId)
 //	{
 //		stockRepo.findAll();
