@@ -12,6 +12,21 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 @Entity
 @Table(name="investor")
 public class Investor {
+
+	@Id
+	private int investorid;
+	@Column(name="username", nullable = false, length=20)
+	private String username;
+	@Column(name="password", nullable = false, length=20)
+	private String password;
+	@Column(name="first_name", nullable = false, length=20)
+	private String firstname;
+	@Column(name="email", nullable = false, length=20)
+	private String email;
+	@Column(name="last_name", nullable = false, length=20)
+	private String lastname;
+//	@Column(name="cash_balance", nullable = false, precision = 8, scale=3)
+//	private float cashbalance;
 	public int getInvestorid() {
 		return investorid;
 	}
@@ -72,21 +87,6 @@ public class Investor {
 	}
 
 
-	@Id
-	private int investorid;
-	@Column(name="username", nullable = false, length=20)
-	private String username;
-	@Column(name="password", nullable = false, length=20)
-	private String password;
-	@Column(name="first_name", nullable = false, length=20)
-	private String firstname;
-	@Column(name="email", nullable = false, length=20)
-	private String email;
-	@Column(name="last_name", nullable = false, length=20)
-	private String lastname;
-//	@Column(name="cash_balance", nullable = false, precision = 8, scale=3)
-//	private float cashbalance;
-	
 
 	public Investor() {
 		// TODO Auto-generated constructor stub

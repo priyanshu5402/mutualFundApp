@@ -13,14 +13,16 @@ import com.ofss.model.MutualFund;
 import com.ofss.model.Stocks;
 import com.ofss.pojo.MutualFundPOJO;
 import com.ofss.repository.FundRepository;
-import com.ofss.utility.Calculations;
+import com.ofss.utility.Calculate;
+
+import oracle.net.aso.f;
 
 
 @Service
 public class FundService {
 	
 	@Autowired
-	FundRepository fundRepo;
+	FundRepository fundRepository;
 	
 	LocalDate currentDate = LocalDate.now();
     Date localDate = Date.valueOf(currentDate);
@@ -34,22 +36,20 @@ public class FundService {
 		//MutualFund mf = fundRepo.insertIntoMutualFund(mutualfundpojo.getCashBalance(), mutualfundpojo.getEntryLoad(), mutualfundpojo.getExitLoad(),mutualfundpojo.getExpenseRatio(),mutualfundpojo.getMutualFundName());
 		
 		for(int index=0; index <stockIds.size();index++ ) {
-			float closingprice = fundRepo.findClosingPriceOfPReviousDay(stockIds.get(index));
+			float closingprice = fundRepository.findClosingPriceOfPReviousDay(stockIds.get(index));
 			stockPrices.add(closingprice);
 		}
 		
-		Calculations.CalculatetotalInvestment(mutualfund, weightages, 1000000000,stockPrices);
-		Calculations.nav(mutualfund);
+		Calculate.CalculatetotalInvestment(mutualfund, weightages, 1000000000,stockPrices);
+		Calculate.nav(mutualfund);
 		
 		
-		fundRepo.save(mutualfund);
+		fundRepository.save(mutualfund);
 
 		addMutualFundStocks(mutualfund,stockIds,weightages);
 
 		return "added to mutual fund table";
-//		catch( e){
-//			
-//		}
+
 	}
 		public String addMutualFundStocks(MutualFund mutualfund,List<Integer> stockIds,List<Integer> weightage) {
 		//	try{
@@ -57,7 +57,7 @@ public class FundService {
 			
 			for(int index=0; index <stockIds.size();index++ ) {
 				
-				fundRepo.insertIntoMutualFundStocks(weightage.get(index), mutualfund.getMutualFundId(),stockIds.get(index) );
+				fundRepository.insertIntoMutualFundStocks(weightage.get(index), mutualfund.getMutualFundId(),stockIds.get(index) );
 
 				
 			}
@@ -65,6 +65,33 @@ public class FundService {
 //			catch( e){
 //				
 //			}
+		}
+		
+		public ArrayList<MutualFund> getAllMutualFunds() {
+			ArrayList<MutualFund> mutualfunds = fundRepository.getAllMutualFunds();
+			
+			return mutualfunds;
+
+		}
+		public String updateMutualFundDetailsForBuy(MutualFund mutualFund,double purchased_units,int transactionAmount) {
+			mutualFund.setRemainingUnits(mutualFund.getRemainingUnits()-purchased_units);
+			mutualFund.setTotalInvestment(mutualFund.getTotalInvestment()+(transactionAmount - transactionAmount*mutualFund.getEntryLoad()/100));
+			
+			Calculate.nav(mutualFund);
+			
+			fundRepository.save(mutualFund);
+			
+			return "nav and totalinvestment updated after buy";
+		}
+		public String updateMutualFundDetailsForSell(MutualFund mutualFund,double sold_units,int transactionAmount) {
+			mutualFund.setRemainingUnits(mutualFund.getRemainingUnits()+sold_units);
+			mutualFund.setTotalInvestment(mutualFund.getTotalInvestment()-(transactionAmount - transactionAmount*mutualFund.getExit_load()/100));
+			
+			Calculate.nav(mutualFund);
+			
+			fundRepository.save(mutualFund);
+			
+			return "nav and totalinvestment updated after sell";
 		}
 
 }

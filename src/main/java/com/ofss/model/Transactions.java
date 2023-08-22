@@ -1,5 +1,7 @@
 package com.ofss.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,21 +22,21 @@ public class Transactions {
 	private int transactionId;
 	
 	@ManyToOne
-	@JoinColumn(name="userid")
+	@JoinColumn(name="investor_id")
 	private Investor investorId;
 	
 	@ManyToOne
 	@JoinColumn(name="mutual_fund_id")
 	private MutualFund mutual_fund;
 	
-	@Column(name="units_sold", nullable = false, length=20)
-	private int unitsSold;
+	@Column(name="units_sold", nullable = false,precision = 12, scale = 3)
+	private double  unitsSold;
 	
-	@Column(name="units_purchased", nullable = false, length=20)
-	private int unitsPurchased;
+	@Column(name="units_purchased", nullable = false,columnDefinition = "NUMBER(15,3)")
+	private double  unitsPurchased;
 	
-	@Column(name="transaction_price", nullable = false, length=20, precision = 8, scale=3)
-	private float transactionPrice;
+	@Column(name="transaction_price", nullable = false,columnDefinition = "NUMBER(15,3)")
+	private double  transactionPrice;
 
 	public int getTransactionId() {
 		return transactionId;
@@ -44,7 +46,13 @@ public class Transactions {
 		this.transactionId = transactionId;
 	}
 
+	public Investor getInvestorId() {
+		return investorId;
+	}
 
+	public void setInvestorId(Investor investorId) {
+		this.investorId = investorId;
+	}
 
 	public MutualFund getMutual_fund() {
 		return mutual_fund;
@@ -54,49 +62,27 @@ public class Transactions {
 		this.mutual_fund = mutual_fund;
 	}
 
-	public int getUnitsSold() {
+	public double getUnitsSold() {
 		return unitsSold;
 	}
 
-	public void setUnitsSold(int unitsSold) {
+	public void setUnitsSold(double unitsSold) {
 		this.unitsSold = unitsSold;
 	}
 
-	public int getUnitsPurchased() {
+	public double getUnitsPurchased() {
 		return unitsPurchased;
 	}
 
-	public void setUnitsPurchased(int unitsPurchased) {
+	public void setUnitsPurchased(double unitsPurchased) {
 		this.unitsPurchased = unitsPurchased;
 	}
 
-	public float getTransactionPrice() {
+	public double getTransactionPrice() {
 		return transactionPrice;
 	}
 
-	public void setTransactionPrice(float transactionPrice) {
-		this.transactionPrice = transactionPrice;
-	}
-	
-	public Transactions() {
-		// TODO Auto-generated constructor stub
-	}
-
-
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		return super.clone();
-	}
-
-	public Transactions(int transactionId, Investor investorId, MutualFund mutual_fund, int unitsSold,
-			int unitsPurchased, float transactionPrice) {
-		super();
-		this.transactionId = transactionId;
-		this.investorId = investorId;
-		this.mutual_fund = mutual_fund;
-		this.unitsSold = unitsSold;
-		this.unitsPurchased = unitsPurchased;
+	public void setTransactionPrice(double transactionPrice) {
 		this.transactionPrice = transactionPrice;
 	}
 
@@ -107,12 +93,17 @@ public class Transactions {
 				+ ", transactionPrice=" + transactionPrice + "]";
 	}
 
-	public Investor getInvestorId() {
-		return investorId;
+	public Transactions(int transactionId, Investor investorId, MutualFund mutual_fund, double unitsSold,
+			double unitsPurchased, double transactionPrice) {
+		super();
+		this.transactionId = transactionId;
+		this.investorId = investorId;
+		this.mutual_fund = mutual_fund;
+		this.unitsSold = unitsSold;
+		this.unitsPurchased = unitsPurchased;
+		this.transactionPrice = transactionPrice;
 	}
 
-	public void setInvestorId(Investor investorId) {
-		this.investorId = investorId;
-	}
+	
 	
 }

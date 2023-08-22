@@ -16,8 +16,11 @@ public interface StockRepository extends CrudRepository<Stocks, StockID> {
 	ArrayList<Stocks> getAllStocks();	
 	
 	@Query(value ="SELECT * FROM STOCKS s WHERE s.PRESENT_DATE = TRUNC(SYSDATE)", nativeQuery=true)
-	ArrayList<Stocks> getUniqueStocks();	
-
+	ArrayList<Stocks> getUniqueStocks();
 	
+	@Query(value="SELECT * from STOCKS s WHERE stock_id = ?",nativeQuery=true)
+	ArrayList<Stocks> findOneStockDetails(int stock_id);
+
+
 	
 }

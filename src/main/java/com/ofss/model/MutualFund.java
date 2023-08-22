@@ -34,35 +34,17 @@ public class MutualFund {
 	@Column(name="cash_balance", nullable = true, length=20, precision = 8, scale=3)
 	private double cashBalance;
 	
-	@Column(name="total_Outstanding_units", nullable = true, length=20)
-	private int totalOutstandingUnits;
+	@Column(name="total_Outstanding_units", nullable = true, length=20,precision = 8, scale=3)
+	private double totalOutstandingUnits;
 	
-	@Column(name="remaining_units", nullable = true, length=20)
-	private int remainingUnits;
+	@Column(name="remaining_units", nullable = true	, length=20,precision = 8, scale=3)
+	private double remainingUnits;
 	
 	@Column(name="nav", nullable = true, length=20, precision = 8, scale=3)
 	private double nav;
 	
 	@Column(name="total_Investment", nullable = true, length=20)
 	private double totalInvestment;
-
-
-
-	public int getTotalOutstandingUnits() {
-		return totalOutstandingUnits;
-	}
-
-	public void setTotalOutstandingUnits(int totalOutstandingUnits) {
-		this.totalOutstandingUnits = totalOutstandingUnits;
-	}
-
-	public double getTotalInvestment() {
-		return totalInvestment;
-	}
-
-	public void setTotalInvestment(double totalInvestment2) {
-		this.totalInvestment = totalInvestment2;
-	}
 
 	public int getMutualFundId() {
 		return mutualFundId;
@@ -112,11 +94,19 @@ public class MutualFund {
 		this.cashBalance = cashBalance;
 	}
 
-	public int getRemainingUnits() {
+	public double getTotalOutstandingUnits() {
+		return totalOutstandingUnits;
+	}
+
+	public void setTotalOutstandingUnits(double totalOutstandingUnits) {
+		this.totalOutstandingUnits = totalOutstandingUnits;
+	}
+
+	public double getRemainingUnits() {
 		return remainingUnits;
 	}
 
-	public void setRemainingUnits(int remainingUnits) {
+	public void setRemainingUnits(double remainingUnits) {
 		this.remainingUnits = remainingUnits;
 	}
 
@@ -126,6 +116,38 @@ public class MutualFund {
 
 	public void setNav(double nav) {
 		this.nav = nav;
+	}
+
+	public double getTotalInvestment() {
+		return totalInvestment;
+	}
+
+	public void setTotalInvestment(double totalInvestment) {
+		this.totalInvestment = totalInvestment;
+	}
+
+	public MutualFund(int mutualFundId, String mutualFundName, double entryLoad, double exit_load, double expenseRatio,
+			double cashBalance, double totalOutstandingUnits, double remainingUnits, double nav,
+			double totalInvestment) {
+		super();
+		this.mutualFundId = mutualFundId;
+		this.mutualFundName = mutualFundName;
+		this.entryLoad = entryLoad;
+		this.exit_load = exit_load;
+		this.expenseRatio = expenseRatio;
+		this.cashBalance = cashBalance;
+		this.totalOutstandingUnits = totalOutstandingUnits;
+		this.remainingUnits = remainingUnits;
+		this.nav = nav;
+		this.totalInvestment = totalInvestment;
+	}
+
+	@Override
+	public String toString() {
+		return "MutualFund [mutualFundId=" + mutualFundId + ", mutualFundName=" + mutualFundName + ", entryLoad="
+				+ entryLoad + ", exit_load=" + exit_load + ", expenseRatio=" + expenseRatio + ", cashBalance="
+				+ cashBalance + ", totalOutstandingUnits=" + totalOutstandingUnits + ", remainingUnits="
+				+ remainingUnits + ", nav=" + nav + ", totalInvestment=" + totalInvestment + "]";
 	}
 
 public MutualFund() {

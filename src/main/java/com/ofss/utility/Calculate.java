@@ -6,7 +6,7 @@ import com.ofss.model.MutualFund;
 
 import oracle.net.aso.m;
 
-public class Calculations {
+public class Calculate {
 	
 	public static void CalculatetotalInvestment(MutualFund mutualfund,List<Integer> weightages,double amountEntered,List<Float> stockPrices) {
 		
@@ -37,4 +37,18 @@ public class Calculations {
 		mutualfund.setNav(nav);
 	
 	}
+	
+	public static double UnitsToBuys(int transactionAmount,double currentNav,double entry_load) {
+		
+		//calculating number of units after subtracting entry load from the investor's purchase amount
+		double numberOfUnits = (transactionAmount - (transactionAmount*entry_load/100))/currentNav;
+		
+		return numberOfUnits;
+	}
+	 public static double UnitsToSell(int transactionAmount, double currentNav, double exitLoad) {
+	       
+	        
+	        double unitsToSell = (transactionAmount - (transactionAmount*exitLoad/100))/currentNav;
+	        return unitsToSell;
+	    }
 }

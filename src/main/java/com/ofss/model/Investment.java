@@ -1,5 +1,7 @@
 package com.ofss.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,14 +24,14 @@ public class Investment {
 	
 	@ManyToOne
 	@JoinColumn(name="investorid")
-	private Investor investorId;
+	private Investor investor;
 	
 	@ManyToOne
 	@JoinColumn(name="mutual_fund_id")
-	private MutualFund mutual_fund;
+	private MutualFund mutualFund;
 	
-	@Column(name="total_units", nullable = false, length=20)
-	private int totalUnits;
+	@Column(name="total_units", nullable = false,precision = 12, scale = 3)
+	private double  totalUnits;
 
 	public int getInvestmentId() {
 		return investmentId;
@@ -39,35 +41,48 @@ public class Investment {
 		this.investmentId = investmentId;
 	}
 
-	public Investor getInvestorId() {
-		return investorId;
+	public Investor getInvestor() {
+		return investor;
 	}
 
-	public void setInvestorId(Investor investorId) {
-		this.investorId = investorId;
+	public void setInvestor(Investor investor) {
+		this.investor = investor;
 	}
 
-	public MutualFund getMutual_fund() {
-		return mutual_fund;
-	}
 
-	public void setMutual_fund(MutualFund mutual_fund) {
-		this.mutual_fund = mutual_fund;
-	}
-
-	public int getTotalUnits() {
+	public double getTotalUnits() {
 		return totalUnits;
 	}
 
-	public void setTotalUnits(int totalUnits) {
+	public void setTotalUnits(double totalUnits) {
 		this.totalUnits = totalUnits;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Investment [investmentId=" + investmentId + ", investorId=" + investorId + ", mutual_fund="
-				+ mutual_fund + ", totalUnits=" + totalUnits + "]";
+		return "Investment [investmentId=" + investmentId + ", investor=" + investor + ", mutualFund=" + mutualFund
+				+ ", totalUnits=" + totalUnits + "]";
 	}
+
+	public MutualFund getMutualFund() {
+		return mutualFund;
+	}
+
+	public void setMutualFund(MutualFund mutualFund) {
+		this.mutualFund = mutualFund;
+	}
+
+	public Investment(int investmentId, Investor investor, MutualFund mutualFund, double totalUnits) {
+		super();
+		this.investmentId = investmentId;
+		this.investor = investor;
+		this.mutualFund = mutualFund;
+		this.totalUnits = totalUnits;
+	}
+public Investment() {
+	// TODO Auto-generated constructor stub
+}
 
 
 }

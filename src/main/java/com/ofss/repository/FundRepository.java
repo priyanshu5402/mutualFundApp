@@ -2,6 +2,7 @@ package com.ofss.repository;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,4 +25,10 @@ public interface FundRepository extends CrudRepository<MutualFund, Integer> {
 		
 		@Query(value="SELECT closing_price FROM Stocks WHERE (EXTRACT(DAY FROM present_date) = (EXTRACT(DAY FROM TRUNC(SYSDATE))-1)) AND STOCK_ID = ?", nativeQuery=true)
 		float findClosingPriceOfPReviousDay(int stockId);
+		
+		@Query(value ="SELECT * FROM Mutual_Fund",nativeQuery=true)
+		ArrayList<MutualFund> getAllMutualFunds();
+		
+		@Query(value="SELECT nav from MUTUAL_FUND WHERE mutual_fund_id = ?",nativeQuery=true)
+		double findNavOfMutualFund(int mutual_fund_id);
 }
