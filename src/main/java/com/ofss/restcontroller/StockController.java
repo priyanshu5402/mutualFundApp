@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ofss.model.StockDetail;
 import com.ofss.model.Stocks;
 import com.ofss.services.StockService;
 

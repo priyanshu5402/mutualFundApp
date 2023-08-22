@@ -23,8 +23,6 @@ public class Manager {
 	private String email;
 	@Column(name="last_name", nullable = false, length=20)
 	private String lastname;
-	@Column(name="cash_balance", nullable = false, precision = 8, scale=3)
-	private float cashbalance;
 	
 	
 	public int getManagerId() {
@@ -63,15 +61,8 @@ public class Manager {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public float getCashbalance() {
-		return cashbalance;
-	}
-	public void setCashbalance(float cashbalance) {
-		this.cashbalance = cashbalance;
-	}
-	
-	public Manager(int managerId, String username, String password, String firstname, String email, String lastname,
-			float cashbalance) {
+
+	public Manager(int managerId, String username, String password, String firstname, String email, String lastname) {
 		super();
 		this.managerId = managerId;
 		this.username = username;
@@ -79,7 +70,6 @@ public class Manager {
 		this.firstname = firstname;
 		this.email = email;
 		this.lastname = lastname;
-		this.cashbalance = cashbalance;
 	}
 	public Manager() {
 		// TODO Auto-generated constructor stub

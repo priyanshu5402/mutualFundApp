@@ -21,12 +21,12 @@ public class InvestorController {
 	@Autowired
 	InvestorService investorservice;
 	
-	@RequestMapping(value="/userlogin", method=RequestMethod.POST)
-	public String login(@RequestBody Investor investor) {
+	@RequestMapping(value="/investorlogin", method=RequestMethod.POST)
+	public Boolean login(@RequestBody Investor investor) {
 		System.out.println("login function called..");
 		if(investorservice.login(investor) == null) {
-		return "invalid user";
-//			return false;
+//		return "invalid user";
+			return false;
 		}
 		else {
 		return investorservice.login(investor);
@@ -46,7 +46,8 @@ public class InvestorController {
 		return investorservice.Sell(transactionpojo);
 		
 	}
-
 	
+	
+
 
 }

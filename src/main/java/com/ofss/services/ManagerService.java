@@ -19,11 +19,11 @@ public class ManagerService {
 		
 		if(( tempUser.getUsername().equals(manager.getUsername()) ) && ( tempUser.getPassword().equals(manager.getPassword()) )) {
 
-			return "success sign in";
+			return "Manager Signed in";
 
 		}
 		else {
-			return "invalid user";
+			return "invalid Manager";
 		}
 	}
 	

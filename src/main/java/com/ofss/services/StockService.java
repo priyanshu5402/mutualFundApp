@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ofss.model.StockDetail;
 import com.ofss.model.StockID;
 import com.ofss.model.Stocks;
 import com.ofss.repository.StockRepository;

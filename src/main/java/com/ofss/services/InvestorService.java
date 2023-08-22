@@ -41,20 +41,22 @@ public class InvestorService {
 	@Autowired
 	TransactionRepository trandRepo;
 	
-	public String login(Investor investor){
+	public Boolean login(Investor investor){
 		Investor tempUser = investorRepository.findByInvestorNamePass(investor.getUsername(), investor.getPassword());
 		System.out.println(tempUser.getUsername()+"   "+investor.getUsername());
 		
 		if(( tempUser.getUsername().equals(investor.getUsername()) ) && ( tempUser.getPassword().equals(investor.getPassword()) )) {
 			
 			System.out.println("Logged in ");
-			return "Investor Logged in";
+//			return "Investor Logged in";
 			//return "redirect:/dashboard";
+			return true;
 
 		}
 		else {
 			System.out.println("Invalid User");
-			return "invalid User";
+//			return "invalid User";
+			return false;
 		}
 	}
 	
@@ -141,21 +143,7 @@ public class InvestorService {
 //		investment.set
 		return "mutual fund sold";
 	}
-//	public String login(Manager manager){
-//		Manager tempUser = investorRepo.findByUserNamePass(manager.getUsername(), manager.getPassword());
-//		System.out.println(tempUser.getUsername()+"   "+manager.getUsername());
-//		
-//		if(( tempUser.getUsername().equals(manager.getUsername()) ) && ( tempUser.getPassword().equals(manager.getPassword()) )) {
-//
-//			return "Manager success sign in";
-//
-//		}
-//		else {
-//			return "invalid user";
-//		}
-//	}
 //	
-	
 	
 	
 }
